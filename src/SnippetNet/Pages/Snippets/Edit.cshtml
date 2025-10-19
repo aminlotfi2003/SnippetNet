@@ -1,0 +1,57 @@
+﻿@page "{id:guid}"
+@model SnippetNet.Pages.Snippets.EditModel
+@{
+    ViewData["Title"] = "Edit Snippet";
+}
+<h2>Edit Snippet</h2>
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="Input.Id" />
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Input.Title"></label>
+        <input class="form-control" asp-for="Input.Title" />
+        <span class="text-danger" asp-validation-for="Input.Title"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Input.Language"></label>
+        <input class="form-control" asp-for="Input.Language" placeholder="e.g., csharp, javascript, sql" />
+        <span class="text-danger" asp-validation-for="Input.Language"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Input.Description"></label>
+        <textarea class="form-control" asp-for="Input.Description"></textarea>
+        <span class="text-danger" asp-validation-for="Input.Description"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tags (comma separated)</label>
+        <input class="form-control" asp-for="TagsCsv" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Input.Code"></label>
+        <textarea class="form-control" asp-for="Input.Code" rows="12"></textarea>
+        <span class="text-danger" asp-validation-for="Input.Code"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input class="form-check-input" asp-for="Input.IsPublic" />
+        <label class="form-check-label" asp-for="Input.IsPublic">Public</label>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+        <a class="btn btn-secondary" asp-page="./Details" asp-route-id="@Model.Input.Id">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

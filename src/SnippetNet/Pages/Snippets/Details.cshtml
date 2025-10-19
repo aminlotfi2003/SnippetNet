@@ -1,0 +1,22 @@
+﻿@page "{id:guid}"
+@model SnippetNet.Pages.Snippets.DetailsModel
+@{
+    ViewData["Title"] = Model.Vm.Title;
+    var codeId = "code_" + Model.Vm.Id.ToString("N");
+}
+<h2>@Model.Vm.Title</h2>
+<p class="text-muted">@Model.Vm.Language</p>
+<p>@Model.Vm.Description</p>
+
+<div class="d-flex gap-2 mb-2">
+    <button class="btn btn-outline-primary" onclick="copyText('@codeId')">Copy</button>
+</div>
+
+<pre><code id="@codeId" class="language-@Model.Vm.Language.ToLower()">@Model.Vm.Code</code></pre>
+
+@if (!string.IsNullOrEmpty(Model.Vm.ReadOnlyToken))
+{
+    <div class="alert alert-info mt-3">
+        Read-only link: <a asp-page="/Share/Read" asp-route-token="@Model.Vm.ReadOnlyToken">open</a>
+    </div>
+}
