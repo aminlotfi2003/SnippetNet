@@ -9,7 +9,8 @@ public static class ServiceCollectionExtensions
     {
         // Register Dependencies Layers
         services.AddApplication()
-                .AddPersistence(config);
+                .AddPersistence(config)
+                .AddIdentity(config);
 
         return services;
     }
