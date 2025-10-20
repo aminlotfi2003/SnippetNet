@@ -3,47 +3,56 @@
 @{
 	ViewData["Title"] = "Edit Snippet";
 }
-<h1>Edit Snippet</h1>
 
-<form method="post">
+<div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-4">
+	<div>
+		<h1 class="display-6 fw-semibold mb-2">Refine snippet</h1>
+		<p class="muted-text mb-0">Keep this snippet aligned with your latest best practices.</p>
+	</div>
+	<a asp-page="Details" asp-route-id="@Model.Command.Id" class="btn btn-secondary">
+		<i class="bi bi-eye me-2"></i>
+		View details
+	</a>
+</div>
+
+<form method="post" class="glass-card p-4 p-lg-5 shadow-sm">
     <input type="hidden" asp-for="Command.Id" />
 
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="row g-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <label asp-for="Command.Title" class="form-label">Title</label>
+            <input asp-for="Command.Title" class="form-control" />
+            <span asp-validation-for="Command.Title" class="text-danger"></span>
+        </div>
 
-		<div class="col-md-4">
-			<label asp-for="Command.Title" class="form-label">Title</label>
-			<input asp-for="Command.Title" class="form-control" />
-			<span asp-validation-for="Command.Title" class="text-danger"></span>
-		</div>
+        <div class="col-md-3">
+            <label asp-for="Command.Language" class="form-label">Language</label>
+            <input asp-for="Command.Language" class="form-control" />
+            <span asp-validation-for="Command.Language" class="text-danger"></span>
+        </div>
 
-		<div class="col-md-4">
-			<label asp-for="Command.Language" class="form-label">Language</label>
-			<input asp-for="Command.Language" class="form-control" />
-			<span asp-validation-for="Command.Language" class="text-danger"></span>
-		</div>
+        <div class="col-md-3">
+            <label asp-for="Command.TagName" class="form-label">Tag</label>
+            <input asp-for="Command.TagName" class="form-control" />
+            <span asp-validation-for="Command.TagName" class="text-danger"></span>
+        </div>
 
-		<div class="col-md-4">
-			<label asp-for="Command.TagName" class="form-label">Tag Name</label>
-			<input asp-for="Command.TagName" class="form-control" />
-			<span asp-validation-for="Command.TagName" class="text-danger"></span>
-		</div>
+        <div class="col-12">
+            <label asp-for="Command.Description" class="form-label">Description</label>
+            <textarea asp-for="Command.Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Command.Description" class="text-danger"></span>
+        </div>
 
-		<div class="col-12">
-			<label asp-for="Command.Description" class="form-label">Description</label>
-			<textarea asp-for="Command.Description" class="form-control" rows="3"></textarea>
-			<span asp-validation-for="Command.Description" class="text-danger"></span>
-		</div>
+        <div class="col-12">
+            <label asp-for="Command.Code" class="form-label">Code</label>
+            <textarea asp-for="Command.Code" class="form-control" rows="10"></textarea>
+            <span asp-validation-for="Command.Code" class="text-danger"></span>
+        </div>
 
-		<div class="col-md-12">
-			<label asp-for="Command.Code" class="form-label">Code</label>
-			<textarea asp-for="Command.Code" class="form-control" rows="9"></textarea>
-			<span asp-validation-for="Command.Code" class="text-danger"></span>
-		</div>
-
-        <div class="col-12 d-flex gap-2 mt-2">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a asp-page="Details" asp-route-id="@Model.Command.Id" class="btn btn-outline-secondary">Cancel</a>
+        <div class="col-12 d-flex flex-column flex-md-row gap-3 mt-2">
+            <button type="submit" class="btn btn-primary btn-lg px-4">Save changes</button>
+            <a asp-page="Details" asp-route-id="@Model.Command.Id" class="btn btn-outline-secondary btn-lg">Cancel</a>
         </div>
     </div>
 </form>

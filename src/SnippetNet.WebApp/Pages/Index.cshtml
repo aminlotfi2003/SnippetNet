@@ -1,10 +1,100 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Welcome";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@section Hero {
+    <section class="hero-section">
+        <div class="container-xl hero-content">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <span class="hero-pill text-white-50">
+                        <i class="bi bi-stars"></i>
+                        Developer-first experience
+                    </span>
+                    <h1 class="display-4 fw-semibold mt-3 mb-4">Craft, organise and share code snippets without the clutter.</h1>
+                    <p class="lead muted-text mb-4">SnippetNet keeps your most-used code blocks just a click away with smart organisation, quick search and delightful UX. Save time, stay consistent and never lose that perfect snippet again.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        <a asp-page="/Snippets/Create" class="btn btn-primary btn-lg">
+                            <i class="bi bi-plus-circle me-2"></i>
+                            Create your first snippet
+                        </a>
+                        <a asp-page="/Snippets/Index" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-collection me-2"></i>
+                            Browse library
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="glass-card p-4 shadow-lift">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="badge badge-soft px-3 py-2">
+                                <i class="bi bi-lightning-charge-fill me-1"></i>
+                                Quick capture
+                            </span>
+                            <span class="text-white-50 small">2 min setup</span>
+                        </div>
+                        <p class="h5 mt-4">“SnippetNet helped our team standardise tricky snippets and share best practices effortlessly.”</p>
+                        <div class="d-flex align-items-center gap-3 mt-4">
+                            <div class="rounded-circle bg-gradient-primary d-inline-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                <i class="bi bi-braces text-white"></i>
+                            </div>
+                            <div>
+                                <div class="fw-semibold">Amelia Carter</div>
+                                <div class="muted-text small">Engineering Manager, Flowbit</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="mb-5">
+    <h2 class="section-title mb-4">Why developers trust SnippetNet</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="glass-card h-100 p-4">
+                <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-gradient-primary bg-opacity-75" style="width:48px;height:48px;">
+                    <i class="bi bi-filter-square text-white fs-5"></i>
+                </div>
+                <h3 class="h5 mt-4">Structured organisation</h3>
+                <p class="muted-text">Group snippets by language, tag and description so they stay discoverable for you and your team.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="glass-card h-100 p-4">
+                <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-gradient-primary bg-opacity-75" style="width:48px;height:48px;">
+                    <i class="bi bi-clipboard-check text-white fs-5"></i>
+                </div>
+                <h3 class="h5 mt-4">Frictionless editing</h3>
+                <p class="muted-text">Beautiful forms, validation and keyboard-friendly controls make capturing snippets effortless.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="glass-card h-100 p-4">
+                <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-gradient-primary bg-opacity-75" style="width:48px;height:48px;">
+                    <i class="bi bi-share text-white fs-5"></i>
+                </div>
+                <h3 class="h5 mt-4">Share-ready details</h3>
+                <p class="muted-text">Copy, preview and send snippets confidently with presentation-ready detail pages and code formatting.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="glass-card p-4 p-md-5">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+            <h3 class="h4 mb-3">Spend time writing features, not hunting for snippets.</h3>
+            <p class="muted-text mb-0">Stay in flow with a library that grows alongside your projects. SnippetNet adapts to your stack and gives you the context you need to reuse code confidently.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+            <a asp-page="/Snippets/Create" class="btn btn-primary btn-lg">
+                Start curating now
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,4 +1,33 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿(() => {
+    const searchInput = document.querySelector('[data-snippet-search]');
+    const grid = document.querySelector('[data-snippet-grid]');
+    const emptyState = document.querySelector('[data-snippet-empty]');
 
-// Write your JavaScript code.
+    if (!searchInput || !grid) {
+        return;
+    }
+
+    const items = Array.from(grid.querySelectorAll('[data-snippet-item]'));
+
+    const applyFilter = () => {
+        const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        items.forEach((item) => {
+            const text = (item.getAttribute('data-search-text') || '').toLowerCase();
+            const isMatch = text.includes(query);
+            item.style.display = isMatch ? '' : 'none';
+            if (isMatch) {
+                visibleCount += 1;
+            }
+        });
+
+        if (emptyState) {
+            emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+    };
+
+    searchInput.addEventListener('input', applyFilter);
+
+    applyFilter();
+})();

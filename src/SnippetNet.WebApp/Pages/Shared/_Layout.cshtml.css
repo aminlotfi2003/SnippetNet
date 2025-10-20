@@ -1,107 +1,78 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿:root {
+    --app-body-bg: #0b1324;
+    --app-card-bg: #141d33;
+    --app-primary: #5b8def;
+    --app-primary-dark: #3a64d8;
+    --app-surface: rgba(255, 255, 255, 0.04);
+    --app-text: #f5f7fb;
+    --app-text-muted: rgba(245, 247, 251, 0.65);
 }
 
-a {
-  color: #0077cc;
+.app-body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at 10% 20%, rgba(47, 73, 209, 0.15), transparent 45%), radial-gradient(circle at 80% 10%, rgba(82, 67, 170, 0.25), transparent 55%), var(--app-body-bg);
+    color: var(--app-text);
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.app-header {
+    backdrop-filter: blur(18px);
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.bg-gradient-primary {
+    background: linear-gradient(135deg, rgba(47, 73, 209, 0.95), rgba(82, 67, 170, 0.95));
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.navbar-brand {
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.navbar .nav-link {
+    font-weight: 500;
+    color: var(--app-text-muted);
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
-
-/* Dark Code Theme (VS Code style) */
-.code-container {
-    background-color: #1e1e1e;
-    color: #dcdcdc;
-    border-radius: 8px;
-    padding: 1rem;
-    overflow-x: auto;
-    font-family: Consolas, 'Courier New', monospace;
-}
-
-    .code-container pre {
-        margin: 0;
-        white-space: pre-wrap;
-        word-wrap: break-word;
+    .navbar .nav-link:hover,
+    .navbar .nav-link:focus {
+        color: #ffffff;
     }
 
-/* Copy Button */
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    font-size: 0.85rem;
-    border-color: #3a3a3a;
-    color: #fff;
-    background-color: #2d2d2d;
+    .navbar .nav-link.active {
+        color: #ffffff;
+        position: relative;
+    }
+
+        .navbar .nav-link.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -0.6rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--app-primary), var(--app-primary-dark));
+            border-radius: 999px;
+        }
+
+.app-footer {
+    background: rgba(6, 9, 20, 0.8);
+    color: var(--app-text-muted);
 }
 
-    .copy-btn:hover {
-        background-color: #3a3a3a;
+    .app-footer a {
+        color: inherit;
     }
 
-/* Copied Message Style */
-.copied-toast {
-    position: absolute;
-    top: -30px;
-    right: 10px;
-    background-color: #28a745;
-    color: #fff;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    animation: fadeOut 1.5s forwards;
+.page-shell {
+    max-width: 1200px;
 }
 
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
+@media (max-width: 575.98px) {
+    .navbar-brand span {
+        font-size: 1rem;
     }
 
-    70% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-10px);
+    .app-footer {
+        text-align: center;
     }
 }

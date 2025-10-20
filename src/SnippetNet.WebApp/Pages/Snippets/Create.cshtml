@@ -3,48 +3,64 @@
 @{
 	ViewData["Title"] = "New Snippet";
 }
-<h1 class="mb-3">New Snippet</h1>
+<div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-4">
+    <div>
+        <h1 class="display-6 fw-semibold mb-2">Create new snippet</h1>
+        <p class="muted-text mb-0">Capture a reusable piece of code with all the context your future self will appreciate.</p>
+    </div>
+    <a asp-page="Index" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-2"></i>
+        Back to library
+    </a>
+</div>
 
-<form method="post">
-	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-	<div class="row g-3">
+<form method="post" class="glass-card p-4 p-lg-5 shadow-sm">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <label asp-for="Command.Title" class="form-label">Title</label>
+            <input asp-for="Command.Title" class="form-control" placeholder="e.g. Configure Serilog logger" autofocus autocomplete="off" />
+            <div class="form-text">Keep it descriptive so it is easy to find later.</div>
+            <span asp-validation-for="Command.Title" class="text-danger"></span>
+        </div>
 
-		<div class="col-md-4">
-			<label asp-for="Command.Title" class="form-label">Title</label>
-			<input asp-for="Command.Title" class="form-control" />
-			<span asp-validation-for="Command.Title" class="text-danger"></span>
-		</div>
+        <div class="col-md-3">
+            <label asp-for="Command.Language" class="form-label">Language</label>
+            <input asp-for="Command.Language" class="form-control" placeholder="C#, SQL, Bash..." />
+            <div class="form-text">The language powers filtering and formatting.</div>
+            <span asp-validation-for="Command.Language" class="text-danger"></span>
+        </div>
 
-		<div class="col-md-4">
-			<label asp-for="Command.Language" class="form-label">Language</label>
-			<input asp-for="Command.Language" class="form-control" />
-			<span asp-validation-for="Command.Language" class="text-danger"></span>
-		</div>
+        <div class="col-md-3">
+            <label asp-for="Command.TagName" class="form-label">Tag</label>
+            <input asp-for="Command.TagName" class="form-control" placeholder="Logging, API, Build..." />
+            <div class="form-text">Add a short tag to group related snippets.</div>
+            <span asp-validation-for="Command.TagName" class="text-danger"></span>
+        </div>
 
-		<div class="col-md-4">
-			<label asp-for="Command.TagName" class="form-label">Tag Name</label>
-			<input asp-for="Command.TagName" class="form-control" />
-			<span asp-validation-for="Command.TagName" class="text-danger"></span>
-		</div>
+        <div class="col-12">
+            <label asp-for="Command.Description" class="form-label">Description</label>
+            <textarea asp-for="Command.Description" class="form-control" rows="3" placeholder="Explain what the snippet solves and how to use it."></textarea>
+            <span asp-validation-for="Command.Description" class="text-danger"></span>
+        </div>
 
-		<div class="col-12">
-			<label asp-for="Command.Description" class="form-label">Description</label>
-			<textarea asp-for="Command.Description" class="form-control" rows="3"></textarea>
-			<span asp-validation-for="Command.Description" class="text-danger"></span>
-		</div>
+        <div class="col-12">
+            <label asp-for="Command.Code" class="form-label">Code</label>
+            <textarea asp-for="Command.Code" class="form-control" rows="10" placeholder="Paste your snippet here..."></textarea>
+            <div class="form-text">Supports multi-line code. Formatting is preserved in the preview.</div>
+            <span asp-validation-for="Command.Code" class="text-danger"></span>
+        </div>
 
-		<div class="col-md-12">
-			<label asp-for="Command.Code" class="form-label">Code</label>
-			<textarea asp-for="Command.Code" class="form-control" rows="9"></textarea>
-			<span asp-validation-for="Command.Code" class="text-danger"></span>
-		</div>
-
-		<div class="col-12 d-flex gap-2 mt-2">
-			<button type="submit" class="btn btn-primary">Create</button>
-			<a asp-page="Index" class="btn btn-outline-secondary">Cancel</a>
-		</div>
-
-	</div>
+        <div class="col-12 d-flex flex-column flex-md-row gap-3 mt-2">
+            <button type="submit" class="btn btn-primary btn-lg px-4">
+                <i class="bi bi-save me-2"></i>
+                Create snippet
+            </button>
+            <a asp-page="Index" class="btn btn-outline-secondary btn-lg">
+                Cancel
+            </a>
+        </div>
+    </div>
 </form>
 
 @section Scripts {

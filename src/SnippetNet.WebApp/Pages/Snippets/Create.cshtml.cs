@@ -26,7 +26,7 @@ public class CreateModel : PageModel
         {
             var id = await _mediator.Send(Command, ct);
 
-            TempData["SuccessMessage"] = "Product created successfully.";
+            TempData["SuccessMessage"] = "Snippet created successfully.";
             return RedirectToPage("Index");
         }
         catch (ConflictException ex)

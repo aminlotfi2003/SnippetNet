@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using SnippetNet.Application.Snippets.Dtos;
-using SnippetNet.Domain.Enums;
 
 namespace SnippetNet.Application.Snippets.Commands.UpdateSnippet;
 
@@ -11,4 +9,4 @@ public record UpdateSnippetCommand(
     string Language,
     string Code,
     string TagName
-) : IRequest<SnippetDto>;
+) : IRequest<Unit>;

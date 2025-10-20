@@ -1,33 +1,50 @@
 ﻿@page "{id:guid}"
 @model SnippetNet.WebApp.Pages.Snippets.DeleteModel
 @{
-    ViewData["Title"] = "Delete Snippet";
+	ViewData["Title"] = "Delete Snippet";
 }
-<h1>Delete Snippet</h1>
 
 @if (Model.Snippet is null)
 {
-    <div class="alert alert-danger">Snippet not found.</div>
+	<div class="alert alert-danger">Snippet not found.</div>
 }
 else
 {
-    var p = Model.Snippet;
+	var p = Model.Snippet;
 
-    <div class="alert alert-warning mb-3">
-        Are you sure you want to delete <strong>@p.Title</strong>?
-    </div>
+	<div class="glass-card p-4 p-lg-5 shadow-sm">
+		<div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
+			<div>
+				<h1 class="display-6 fw-semibold mb-2">Delete snippet</h1>
+				<p class="muted-text mb-0">You’re about to permanently remove <strong>@p.Title</strong>. This action cannot be undone.</p>
+			</div>
+			<a asp-page="Details" asp-route-id="@p.Id" class="btn btn-secondary">
+				<i class="bi bi-eye me-2"></i>
+				Review details
+			</a>
+		</div>
+		<div class="alert alert-warning mb-4">
+			<i class="bi bi-exclamation-triangle me-2"></i>
+			Double-check that you no longer need this snippet in your workflow.
+		</div>
 
-    <!-- Preview of the snippet that will be deleted -->
-    <div class="code-preview mb-3">
-        <div class="code-preview__header">
-            <span class="fw-semibold">@p.Title</span>
-            <span class="badge bg-secondary ms-2">@p.Language</span>
-        </div>
-        <pre class="code-preview__body"><code class="language-@p.Language.ToLower()">@p.Code</code></pre>
-    </div>
+		<div class="code-container mb-4">
+			<div class="d-flex align-items-center justify-content-between mb-3">
+				<div>
+					<div class="fw-semibold">@p.Title</div>
+					<div class="muted-text small">Language: @p.Language · Tag: @p.TagName</div>
+				</div>
+				<span class="badge badge-soft px-3 py-2">@p.Language</span>
+			</div>
+			<pre class="mb-0"><code class="language-@p.Language.ToLower()">@p.Code</code></pre>
+		</div>
 
-    <form method="post" class="d-flex gap-2">
-        <button type="submit" class="btn btn-danger">Delete</button>
-        <a asp-page="Details" asp-route-id="@p.Id" class="btn btn-secondary">Cancel</a>
-    </form>
+		<form method="post" class="d-flex flex-column flex-md-row gap-3">
+			<button type="submit" class="btn btn-danger btn-lg">
+				<i class="bi bi-trash me-2"></i>
+				Delete forever
+			</button>
+			<a asp-page="Details" asp-route-id="@p.Id" class="btn btn-outline-secondary btn-lg">Cancel</a>
+		</form>
+	</div>
 }
