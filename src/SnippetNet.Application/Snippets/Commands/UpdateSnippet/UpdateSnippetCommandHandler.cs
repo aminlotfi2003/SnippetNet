@@ -20,6 +20,12 @@ public class UpdateSnippetCommandHandler : IRequestHandler<UpdateSnippetCommand,
     {
         var result = await _repo.GetByIdAsync(req.Id, ct)
             ?? throw new NotFoundException("Snippet", req.Id);
+        
+        result.Title = req.Title.Trim();
+        result.Description = req.Description?.Trim();
+        result.Language = req.Language.Trim();
+        result.TagName = req.TagName.Trim();
+        result.Code = req.Code;
 
         _repo.Update(result);
         await _uow.SaveChangesAsync(ct);
