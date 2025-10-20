@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36109.1 d17.14
+VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippetNet", "src\SnippetNet\SnippetNet.csproj", "{F2482D92-C214-493F-AF2A-5371FADAC3FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippetNet.Domain", "src\SnippetNet.Domain\SnippetNet.Domain.csproj", "{5D755235-0A38-4DFD-B682-2D6E7544D258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippetNet.Application", "src\SnippetNet.Application\SnippetNet.Application.csproj", "{5F6DB6E3-1271-4984-AE96-3D8FE8834C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippetNet.Infrastructure", "src\SnippetNet.Infrastructure\SnippetNet.Infrastructure.csproj", "{B3EFD3B1-6B30-4967-B5D5-1622D5604A6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnippetNet.WebApp", "src\SnippetNet.WebApp\SnippetNet.WebApp.csproj", "{34A09B38-244C-4EF2-9D9D-2DB636207B6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +19,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F2482D92-C214-493F-AF2A-5371FADAC3FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2482D92-C214-493F-AF2A-5371FADAC3FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2482D92-C214-493F-AF2A-5371FADAC3FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2482D92-C214-493F-AF2A-5371FADAC3FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D755235-0A38-4DFD-B682-2D6E7544D258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D755235-0A38-4DFD-B682-2D6E7544D258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D755235-0A38-4DFD-B682-2D6E7544D258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D755235-0A38-4DFD-B682-2D6E7544D258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6DB6E3-1271-4984-AE96-3D8FE8834C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6DB6E3-1271-4984-AE96-3D8FE8834C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6DB6E3-1271-4984-AE96-3D8FE8834C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6DB6E3-1271-4984-AE96-3D8FE8834C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3EFD3B1-6B30-4967-B5D5-1622D5604A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3EFD3B1-6B30-4967-B5D5-1622D5604A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3EFD3B1-6B30-4967-B5D5-1622D5604A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3EFD3B1-6B30-4967-B5D5-1622D5604A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A09B38-244C-4EF2-9D9D-2DB636207B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A09B38-244C-4EF2-9D9D-2DB636207B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A09B38-244C-4EF2-9D9D-2DB636207B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A09B38-244C-4EF2-9D9D-2DB636207B6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F2482D92-C214-493F-AF2A-5371FADAC3FA} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5D755235-0A38-4DFD-B682-2D6E7544D258} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5F6DB6E3-1271-4984-AE96-3D8FE8834C14} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{B3EFD3B1-6B30-4967-B5D5-1622D5604A6A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{34A09B38-244C-4EF2-9D9D-2DB636207B6A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8390CC01-D8F6-433D-B631-CF527DBF00F9}
