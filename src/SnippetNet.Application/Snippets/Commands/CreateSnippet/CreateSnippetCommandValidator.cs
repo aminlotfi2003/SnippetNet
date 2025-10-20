@@ -7,7 +7,7 @@ public class CreateSnippetCommandValidator : AbstractValidator<CreateSnippetComm
     public CreateSnippetCommandValidator()
     {
         RuleFor(x => x.Title).NotEmpty().MaximumLength(200);
-        RuleFor(x => x.Language).IsInEnum();
+        RuleFor(x => x.Language).NotEmpty().MaximumLength(50);
         RuleFor(x => x.Code).NotEmpty();
         RuleFor(x => x.TagName).NotEmpty().MaximumLength(50);
     }

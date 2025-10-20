@@ -7,7 +7,7 @@ namespace SnippetNet.Application.Snippets.Commands.CreateSnippet;
 public record CreateSnippetCommand(
     string Title,
     string? Description,
-    Language Language,
+    string Language,
     string Code,
     string TagName
 ) : IRequest<SnippetDto>;

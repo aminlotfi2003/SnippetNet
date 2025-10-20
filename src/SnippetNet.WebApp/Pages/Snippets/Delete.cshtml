@@ -1,0 +1,33 @@
+﻿@page "{id:guid}"
+@model SnippetNet.WebApp.Pages.Snippets.DeleteModel
+@{
+    ViewData["Title"] = "Delete Snippet";
+}
+<h1>Delete Snippet</h1>
+
+@if (Model.Snippet is null)
+{
+    <div class="alert alert-danger">Snippet not found.</div>
+}
+else
+{
+    var p = Model.Snippet;
+
+    <div class="alert alert-warning mb-3">
+        Are you sure you want to delete <strong>@p.Title</strong>?
+    </div>
+
+    <!-- Preview of the snippet that will be deleted -->
+    <div class="code-preview mb-3">
+        <div class="code-preview__header">
+            <span class="fw-semibold">@p.Title</span>
+            <span class="badge bg-secondary ms-2">@p.Language</span>
+        </div>
+        <pre class="code-preview__body"><code class="language-@p.Language.ToLower()">@p.Code</code></pre>
+    </div>
+
+    <form method="post" class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="Details" asp-route-id="@p.Id" class="btn btn-secondary">Cancel</a>
+    </form>
+}

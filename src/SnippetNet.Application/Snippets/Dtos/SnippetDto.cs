@@ -7,7 +7,7 @@ public sealed record SnippetDto(
     Guid Id,
     string Title,
     string? Description,
-    Language Language,
+    string Language,
     string Code,
     string TagName)
 {

@@ -1,0 +1,50 @@
+﻿@page
+@model SnippetNet.WebApp.Pages.Snippets.IndexModel
+@{
+	ViewData["Title"] = "Snippets";
+}
+<h1 class="mb-3">Snippets</h1>
+
+@if (!string.IsNullOrWhiteSpace(Model.SuccessMessage))
+{
+    <div class="alert alert-success">@Model.SuccessMessage</div>
+}
+
+<div class="mb-3">
+    <a class="btn btn-primary" asp-page="Create">+ New Snippet</a>
+</div>
+
+@if (Model.Snippets is null || Model.Snippets.Count == 0)
+{
+    <div class="alert alert-info">No snippets yet.</div>
+}
+else
+{
+    <table class="table table-striped align-middle text-center">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Language</th>
+                <th>Tag Name</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Snippets)
+            {
+                <tr>
+                    <td>@p.Title</td>
+                    <td>@p.Description</td>
+                    <td>@p.Language</td>
+                    <td>@p.TagName</td>
+                    <td>
+                        <a asp-page="Details" asp-route-id="@p.Id">Details</a> |
+                        <a asp-page="Edit" asp-route-id="@p.Id">Edit</a> |
+                        <a asp-page="Delete" asp-route-id="@p.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

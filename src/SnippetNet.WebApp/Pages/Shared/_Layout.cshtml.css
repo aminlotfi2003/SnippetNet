@@ -46,3 +46,62 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+/* Dark Code Theme (VS Code style) */
+.code-container {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: Consolas, 'Courier New', monospace;
+}
+
+    .code-container pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+/* Copy Button */
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 0.85rem;
+    border-color: #3a3a3a;
+    color: #fff;
+    background-color: #2d2d2d;
+}
+
+    .copy-btn:hover {
+        background-color: #3a3a3a;
+    }
+
+/* Copied Message Style */
+.copied-toast {
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    animation: fadeOut 1.5s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}

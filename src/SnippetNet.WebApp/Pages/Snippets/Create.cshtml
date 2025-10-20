@@ -1,0 +1,52 @@
+﻿@page
+@model SnippetNet.WebApp.Pages.Snippets.CreateModel
+@{
+	ViewData["Title"] = "New Snippet";
+}
+<h1 class="mb-3">New Snippet</h1>
+
+<form method="post">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<div class="row g-3">
+
+		<div class="col-md-4">
+			<label asp-for="Command.Title" class="form-label">Title</label>
+			<input asp-for="Command.Title" class="form-control" />
+			<span asp-validation-for="Command.Title" class="text-danger"></span>
+		</div>
+
+		<div class="col-md-4">
+			<label asp-for="Command.Language" class="form-label">Language</label>
+			<input asp-for="Command.Language" class="form-control" />
+			<span asp-validation-for="Command.Language" class="text-danger"></span>
+		</div>
+
+		<div class="col-md-4">
+			<label asp-for="Command.TagName" class="form-label">Tag Name</label>
+			<input asp-for="Command.TagName" class="form-control" />
+			<span asp-validation-for="Command.TagName" class="text-danger"></span>
+		</div>
+
+		<div class="col-12">
+			<label asp-for="Command.Description" class="form-label">Description</label>
+			<textarea asp-for="Command.Description" class="form-control" rows="3"></textarea>
+			<span asp-validation-for="Command.Description" class="text-danger"></span>
+		</div>
+
+		<div class="col-md-12">
+			<label asp-for="Command.Code" class="form-label">Code</label>
+			<textarea asp-for="Command.Code" class="form-control" rows="9"></textarea>
+			<span asp-validation-for="Command.Code" class="text-danger"></span>
+		</div>
+
+		<div class="col-12 d-flex gap-2 mt-2">
+			<button type="submit" class="btn btn-primary">Create</button>
+			<a asp-page="Index" class="btn btn-outline-secondary">Cancel</a>
+		</div>
+
+	</div>
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

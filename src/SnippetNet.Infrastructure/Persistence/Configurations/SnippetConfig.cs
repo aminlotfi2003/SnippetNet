@@ -12,7 +12,7 @@ public class SnippetConfig : IEntityTypeConfiguration<Snippet>
         b.HasKey(x => x.Id);
 
         b.Property(x => x.Title).IsRequired().HasMaxLength(200);
-        b.Property(x => x.Language).IsRequired();
+        b.Property(x => x.Language).IsRequired().HasMaxLength(50);
         b.Property(x => x.Description).HasMaxLength(2000);
         b.Property(x => x.Code).IsRequired();
         b.Property(x => x.TagName).IsRequired().HasMaxLength(50);
