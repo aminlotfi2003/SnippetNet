@@ -29,10 +29,6 @@
                     <dt class="col-4 text-white-50">Last password change</dt>
                     <dd class="col-8">@(Model.UserProfile.LastPasswordChangedAt?.ToString("g") ?? "Never")</dd>
                 </dl>
-
-                <div class="mt-4">
-                    <a asp-page="/Account/EnableTwoFactor" class="btn btn-outline-primary">Manage two-factor authentication</a>
-                </div>
             }
             else
             {
@@ -50,7 +46,7 @@
             else
             {
                 <div class="table-responsive">
-                    <table class="table table-sm align-middle mb-0">
+                    <table class="table table-sm align-middle mb-0 text-center">
                         <thead>
                             <tr>
                                 <th scope="col">When</th>
