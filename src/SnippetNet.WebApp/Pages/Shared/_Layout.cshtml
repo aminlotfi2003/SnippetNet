@@ -41,12 +41,34 @@
 							<li class="nav-item">
 								<a class="nav-link @((currentPage == "/Privacy") ? "active" : null)" asp-area="" asp-page="/Privacy">Privacy</a>
 							</li>
+							@if (User.Identity?.IsAuthenticated ?? false)
+							{
+								<li class="nav-item">
+									<a class="nav-link @((currentPage == "/Profile/Index") ? "active" : null)" asp-area="" asp-page="/Profile/Index">Profile</a>
+								</li>
+							}
 						</ul>
-						<div class="ms-lg-4 mt-3 mt-lg-0">
-							<a class="btn btn-light btn-sm text-primary-emphasis fw-semibold shadow-sm" asp-area="" asp-page="/Snippets/Create">
-								<i class="bi bi-plus-circle me-1"></i>
-								New snippet
-							</a>
+						<div class="ms-lg-4 mt-3 mt-lg-0 d-flex align-items-center gap-2">
+							@if (User.Identity?.IsAuthenticated ?? false)
+							{
+								<a class="btn btn-light btn-sm text-primary-emphasis fw-semibold shadow-sm" asp-area="" asp-page="/Snippets/Create">
+									<i class="bi bi-plus-circle me-1"></i>
+									New snippet
+								</a>
+								<form method="post" asp-area="" asp-page="/Account/Logout" class="d-inline">
+									<button type="submit" class="btn btn-outline-light btn-sm">
+										<i class="bi bi-box-arrow-right me-1"></i>
+										Sign out
+									</button>
+								</form>
+							}
+							else
+							{
+								<a class="btn btn-outline-light btn-sm" asp-area="" asp-page="/Account/Login">Sign in</a>
+								<a class="btn btn-light btn-sm text-primary-emphasis fw-semibold shadow-sm" asp-area="" asp-page="/Account/Register">
+									Create account
+								</a>
+							}
 						</div>
 					</div>
 				</div>

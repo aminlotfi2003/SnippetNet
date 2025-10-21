@@ -15,7 +15,7 @@ public class ListSnippetsQueryHandler : IRequestHandler<ListSnippetsQuery, IRead
 
     public async Task<IReadOnlyList<SnippetDto>> Handle(ListSnippetsQuery req, CancellationToken ct)
     {
-        var result = await _repo.ListAsync(null, ct);
+        var result = await _repo.ListAsync(s => s.OwnerId == req.OwnerId, ct);
 
         return result.Select(SnippetDto.FromEntity).ToList();
     }

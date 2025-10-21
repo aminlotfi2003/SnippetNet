@@ -16,7 +16,9 @@ public class SnippetConfig : IEntityTypeConfiguration<Snippet>
         b.Property(x => x.Description).HasMaxLength(2000);
         b.Property(x => x.Code).IsRequired();
         b.Property(x => x.TagName).IsRequired().HasMaxLength(50);
+        b.Property(x => x.OwnerId).IsRequired();
 
-        b.HasIndex(x => new { x.TagName, x.Language });
+        b.HasIndex(x => new { x.OwnerId, x.TagName, x.Language });
+        b.HasIndex(x => x.OwnerId);
     }
 }

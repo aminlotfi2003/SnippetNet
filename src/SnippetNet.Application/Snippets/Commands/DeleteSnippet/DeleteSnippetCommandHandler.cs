@@ -21,8 +21,11 @@ public class DeleteSnippetCommandHandler : IRequestHandler<DeleteSnippetCommand,
         var result = await _repo.GetByIdAsync(req.Id, ct)
             ?? throw new NotFoundException("Snippet", req.Id);
 
+        if (result.OwnerId != req.OwnerId)
+            throw new NotFoundException("Snippet", req.Id);
+
         _repo.Remove(result);
-        await _uow.SaveChangesAsync();
+        await _uow.SaveChangesAsync(ct);
         return Unit.Value;
     }
 }

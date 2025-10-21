@@ -6,6 +6,7 @@ public class CreateSnippetCommandValidator : AbstractValidator<CreateSnippetComm
 {
     public CreateSnippetCommandValidator()
     {
+        RuleFor(x => x.OwnerId).NotEmpty();
         RuleFor(x => x.Title).NotEmpty().MaximumLength(200);
         RuleFor(x => x.Language).NotEmpty().MaximumLength(50);
         RuleFor(x => x.Code).NotEmpty();

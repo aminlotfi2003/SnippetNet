@@ -6,9 +6,9 @@ using SnippetNet.Infrastructure.Persistence.Contexts;
 namespace SnippetNet.Infrastructure.Persistence.Repositories.Identity;
 
 public sealed class RefreshTokenRepository(
-    ApplicationIdentityDbContext context) : IRefreshTokenRepository
+    ApplicationDbContext context) : IRefreshTokenRepository
 {
-    private readonly ApplicationIdentityDbContext _context = context;
+    private readonly ApplicationDbContext _context = context;
 
     public async Task AddAsync(RefreshToken token, CancellationToken cancellationToken = default)
     {

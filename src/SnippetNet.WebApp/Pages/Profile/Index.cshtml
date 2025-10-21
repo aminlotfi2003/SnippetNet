@@ -1,0 +1,76 @@
+﻿@page
+@model SnippetNet.WebApp.Pages.Profile.IndexModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="row g-4">
+    <div class="col-lg-5">
+        <div class="glass-card p-4 shadow-sm h-100">
+            <h2 class="h4 fw-semibold mb-3">Account details</h2>
+            @if (Model.UserProfile is not null)
+            {
+                <dl class="row mb-0">
+                    <dt class="col-4 text-white-50">Email</dt>
+                    <dd class="col-8">@Model.UserProfile.Email</dd>
+
+                    <dt class="col-4 text-white-50">First name</dt>
+                    <dd class="col-8">@Model.UserProfile.FirstName</dd>
+
+                    <dt class="col-4 text-white-50">Last name</dt>
+                    <dd class="col-8">@Model.UserProfile.LastName</dd>
+
+                    <dt class="col-4 text-white-50">Birth date</dt>
+                    <dd class="col-8">@(Model.UserProfile.BirthDate?.ToString("yyyy-MM-dd") ?? "-")</dd>
+
+                    <dt class="col-4 text-white-50">Active</dt>
+                    <dd class="col-8">@(Model.UserProfile.IsActived ? "Yes" : "No")</dd>
+
+                    <dt class="col-4 text-white-50">Last password change</dt>
+                    <dd class="col-8">@(Model.UserProfile.LastPasswordChangedAt?.ToString("g") ?? "Never")</dd>
+                </dl>
+
+                <div class="mt-4">
+                    <a asp-page="/Account/EnableTwoFactor" class="btn btn-outline-primary">Manage two-factor authentication</a>
+                </div>
+            }
+            else
+            {
+                <p class="muted-text">We couldn't load your profile details right now.</p>
+            }
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="glass-card p-4 shadow-sm h-100">
+            <h2 class="h4 fw-semibold mb-3">Recent logins</h2>
+            @if (Model.LoginHistory.Count == 0)
+            {
+                <p class="muted-text mb-0">No login activity recorded yet.</p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-sm align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">When</th>
+                                <th scope="col">IP address</th>
+                                <th scope="col">User agent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var entry in Model.LoginHistory)
+                            {
+                                <tr>
+                                    <td>@entry.LoggedInAt.ToString("g")</td>
+                                    <td>@(string.IsNullOrWhiteSpace(entry.IpAddress) ? "-" : entry.IpAddress)</td>
+                                    <td class="text-truncate" style="max-width: 250px;">@(string.IsNullOrWhiteSpace(entry.UserAgent) ? "-" : entry.UserAgent)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

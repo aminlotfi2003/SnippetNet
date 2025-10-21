@@ -3,6 +3,7 @@
 namespace SnippetNet.Application.Snippets.Commands.UpdateSnippet;
 
 public record UpdateSnippetCommand(
+    Guid OwnerId,
     Guid Id,
     string Title,
     string? Description,

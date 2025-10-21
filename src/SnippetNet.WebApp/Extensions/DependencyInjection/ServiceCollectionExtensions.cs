@@ -12,6 +12,8 @@ public static class ServiceCollectionExtensions
                 .AddPersistence(config)
                 .AddIdentity(config);
 
+        services.AddAuthorization();
+
         return services;
     }
 }

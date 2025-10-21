@@ -10,4 +10,5 @@ public class Snippet : EntityBase
     public string Language { get; set; } = default!;
     public string Code { get; set; } = default!;
     public string TagName { get; set; } = default!;
+    public Guid OwnerId { get; set; }
 }

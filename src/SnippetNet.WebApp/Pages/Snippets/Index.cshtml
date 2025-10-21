@@ -13,15 +13,35 @@
             <i class="bi bi-house me-2"></i>
             Back to home
         </a>
-        <a class="btn btn-primary" asp-page="Create" style="color:#564eb4">
-            <i class="bi bi-plus-circle me-2"></i>
-            New snippet
-        </a>
+        @if (!Model.RequiresAuthentication)
+        {
+            <a class="btn btn-primary" asp-page="Create" style="color:#564eb4">
+                <i class="bi bi-plus-circle me-2"></i>
+                New snippet
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-primary" asp-page="/Account/Login" style="color:#564eb4">
+                <i class="bi bi-box-arrow-in-right me-2"></i>
+                Log in to add
+            </a>
+        }
     </div>
 </div>
 @if (!string.IsNullOrWhiteSpace(Model.SuccessMessage))
 {
     <div class="alert alert-success shadow-sm">@Model.SuccessMessage</div>
+}
+
+@if (Model.RequiresAuthentication)
+{
+    <div class="alert alert-warning shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-info-circle"></i>
+            <span>You need to log in before you can create or view your snippets.</span>
+        </div>
+    </div>
 }
 
 @if (Model.Snippets is null || Model.Snippets.Count == 0)
@@ -30,10 +50,20 @@
         <i class="bi bi-inboxes"></i>
         <h2 class="h4">No snippets yet</h2>
         <p class="mb-4">Start building your personal snippet hub by capturing your first code example.</p>
-        <a class="btn btn-outline-secondary" asp-page="Create">
-            <i class="bi bi-plus-lg me-2"></i>
-            Add snippet
-        </a>
+        @if (!Model.RequiresAuthentication)
+        {
+            <a class="btn btn-outline-secondary" asp-page="Create">
+                <i class="bi bi-plus-lg me-2"></i>
+                Add snippet
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-outline-secondary" asp-page="/Account/Login">
+                <i class="bi bi-box-arrow-in-right me-2"></i>
+                Log in to get started
+            </a>
+        }
     </div>
 }
 else

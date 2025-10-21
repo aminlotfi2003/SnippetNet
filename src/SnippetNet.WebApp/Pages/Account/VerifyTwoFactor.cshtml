@@ -1,0 +1,42 @@
+﻿@page
+@model SnippetNet.WebApp.Pages.Account.VerifyTwoFactorModel
+@{
+    ViewData["Title"] = "Two-factor verification";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-5">
+        <div class="glass-card p-4 p-lg-5 shadow-sm">
+            <h1 class="h4 fw-semibold mb-3">Enter your verification code</h1>
+            <p class="muted-text mb-4">We sent a verification code to your email address. Enter it below to finish signing in.</p>
+
+            @if (!string.IsNullOrEmpty(Model.GeneratedToken))
+            {
+                <div class="alert alert-info">
+                    <div class="fw-semibold mb-1">Demo token</div>
+                    <p class="mb-0">Use this token to complete the login: <code>@Model.GeneratedToken</code></p>
+                </div>
+            }
+
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input asp-for="Input.UserId" type="hidden" />
+                <input asp-for="Input.RememberMe" type="hidden" />
+                <input asp-for="Input.ReturnUrl" type="hidden" />
+
+                <div class="mb-3">
+                    <label asp-for="Input.Token" class="form-label">Verification code</label>
+                    <input asp-for="Input.Token" class="form-control" autocomplete="one-time-code" />
+                    <span asp-validation-for="Input.Token" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Verify and sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

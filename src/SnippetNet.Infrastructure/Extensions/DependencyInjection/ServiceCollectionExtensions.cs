@@ -35,10 +35,6 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddIdentity(this IServiceCollection services, IConfiguration config)
     {
-        // Register DbContext
-        services.AddDbContext<ApplicationIdentityDbContext>(options =>
-            options.UseSqlServer(config.GetConnectionString("Default")));
-
         services.Configure<JwtOptions>(config.GetSection(JwtOptions.SectionName));
 
         services.AddIdentityCore<ApplicationUser>(options =>
@@ -54,7 +50,7 @@ public static class ServiceCollectionExtensions
             options.Lockout.MaxFailedAccessAttempts = 3;
         })
             .AddRoles<IdentityRole<Guid>>()
-            .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddSignInManager()
             .AddDefaultTokenProviders();
 
@@ -63,9 +59,18 @@ public static class ServiceCollectionExtensions
 
         services.AddAuthentication(options =>
         {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
+            options.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
+            options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
         })
+            .AddCookie(IdentityConstants.ApplicationScheme, options =>
+            {
+                options.Cookie.Name = "SnippetNet.Auth";
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/Login";
+                options.SlidingExpiration = true;
+            })
+            .AddCookie(IdentityConstants.ExternalScheme)
             .AddJwtBearer(options =>
             {
                 options.RequireHttpsMetadata = false;

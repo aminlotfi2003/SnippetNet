@@ -18,37 +18,37 @@
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
     <div class="row g-4">
         <div class="col-md-6">
-            <label asp-for="Command.Title" class="form-label">Title</label>
-            <input asp-for="Command.Title" class="form-control" placeholder="e.g. Configure Serilog logger" autofocus autocomplete="off" />
+            <label asp-for="Input.Title" class="form-label">Title</label>
+            <input asp-for="Input.Title" class="form-control" placeholder="e.g. Configure Serilog logger" autofocus autocomplete="off" />
             <div class="form-text">Keep it descriptive so it is easy to find later.</div>
-            <span asp-validation-for="Command.Title" class="text-danger"></span>
+            <span asp-validation-for="Input.Title" class="text-danger"></span>
         </div>
 
         <div class="col-md-3">
-            <label asp-for="Command.Language" class="form-label">Language</label>
-            <input asp-for="Command.Language" class="form-control" placeholder="C#, SQL, Bash..." />
+            <label asp-for="Input.Language" class="form-label">Language</label>
+            <input asp-for="Input.Language" class="form-control" placeholder="C#, SQL, Bash..." />
             <div class="form-text">The language powers filtering and formatting.</div>
-            <span asp-validation-for="Command.Language" class="text-danger"></span>
+            <span asp-validation-for="Input.Language" class="text-danger"></span>
         </div>
 
         <div class="col-md-3">
-            <label asp-for="Command.TagName" class="form-label">Tag</label>
-            <input asp-for="Command.TagName" class="form-control" placeholder="Logging, API, Build..." />
+            <label asp-for="Input.TagName" class="form-label">Tag</label>
+            <input asp-for="Input.TagName" class="form-control" placeholder="Logging, API, Build..." />
             <div class="form-text">Add a short tag to group related snippets.</div>
-            <span asp-validation-for="Command.TagName" class="text-danger"></span>
+            <span asp-validation-for="Input.TagName" class="text-danger"></span>
         </div>
 
         <div class="col-12">
-            <label asp-for="Command.Description" class="form-label">Description</label>
-            <textarea asp-for="Command.Description" class="form-control" rows="3" placeholder="Explain what the snippet solves and how to use it."></textarea>
-            <span asp-validation-for="Command.Description" class="text-danger"></span>
+            <label asp-for="Input.Description" class="form-label">Description</label>
+            <textarea asp-for="Input.Description" class="form-control" rows="3" placeholder="Explain what the snippet solves and how to use it."></textarea>
+            <span asp-validation-for="Input.Description" class="text-danger"></span>
         </div>
 
         <div class="col-12">
-            <label asp-for="Command.Code" class="form-label">Code</label>
-            <textarea asp-for="Command.Code" class="form-control" rows="10" placeholder="Paste your snippet here..."></textarea>
+            <label asp-for="Input.Code" class="form-label">Code</label>
+            <textarea asp-for="Input.Code" class="form-control" rows="10" placeholder="Paste your snippet here..."></textarea>
             <div class="form-text">Supports multi-line code. Formatting is preserved in the preview.</div>
-            <span asp-validation-for="Command.Code" class="text-danger"></span>
+            <span asp-validation-for="Input.Code" class="text-danger"></span>
         </div>
 
         <div class="col-12 d-flex flex-column flex-md-row gap-3 mt-2">

@@ -5,9 +5,9 @@ using SnippetNet.Infrastructure.Persistence.Contexts;
 
 namespace SnippetNet.Infrastructure.Persistence.Repositories.Identity;
 
-public sealed class UserPasswordHistoryRepository(ApplicationIdentityDbContext context) : IUserPasswordHistoryRepository
+public sealed class UserPasswordHistoryRepository(ApplicationDbContext context) : IUserPasswordHistoryRepository
 {
-    private readonly ApplicationIdentityDbContext _context = context;
+    private readonly ApplicationDbContext _context = context;
 
     public async Task<IReadOnlyList<UserPasswordHistory>> GetRecentAsync(
         Guid userId,

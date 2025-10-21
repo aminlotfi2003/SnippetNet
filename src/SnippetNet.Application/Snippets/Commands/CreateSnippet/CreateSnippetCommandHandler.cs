@@ -26,6 +26,7 @@ public class CreateSnippetCommandHandler : IRequestHandler<CreateSnippetCommand,
 
         var snippet = new Snippet
         {
+            OwnerId = req.OwnerId,
             Title = req.Title,
             Description = req.Description,
             Language = req.Language,

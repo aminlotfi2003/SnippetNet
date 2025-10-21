@@ -19,6 +19,9 @@ public class GetSnippetByIdQueryHandler : IRequestHandler<GetSnippetByIdQuery, S
         var result = await _repo.GetByIdAsync(req.Id, ct)
             ?? throw new NotFoundException("Snippet", req.Id);
 
+        if (result.OwnerId != req.OwnerId)
+            throw new NotFoundException("Snippet", req.Id);
+
         return SnippetDto.FromEntity(result);
     }
 }

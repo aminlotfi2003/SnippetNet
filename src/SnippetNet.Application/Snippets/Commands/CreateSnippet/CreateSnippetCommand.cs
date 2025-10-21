@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using SnippetNet.Application.Snippets.Dtos;
-using SnippetNet.Domain.Enums;
 
 namespace SnippetNet.Application.Snippets.Commands.CreateSnippet;
 
 public record CreateSnippetCommand(
+    Guid OwnerId,
     string Title,
     string? Description,
     string Language,
