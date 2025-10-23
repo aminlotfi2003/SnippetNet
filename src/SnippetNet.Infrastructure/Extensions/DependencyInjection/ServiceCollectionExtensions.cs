@@ -8,12 +8,14 @@ using SnippetNet.Application.Common.Abstractions.Repositories;
 using SnippetNet.Application.Common.Abstractions.Repositories.Identity;
 using SnippetNet.Application.Common.Abstractions.UoW;
 using SnippetNet.Application.Common.Services.Identity;
+using SnippetNet.Application.Common.Services.Notifications;
 using SnippetNet.Domain.Identity;
 using SnippetNet.Infrastructure.Persistence.Contexts;
 using SnippetNet.Infrastructure.Persistence.Options;
 using SnippetNet.Infrastructure.Persistence.Repositories;
 using SnippetNet.Infrastructure.Persistence.Repositories.Identity;
 using SnippetNet.Infrastructure.Persistence.Services.Identity;
+using SnippetNet.Infrastructure.Persistence.Services.Notifications;
 using SnippetNet.Infrastructure.Persistence.UoW;
 using System.Text;
 
@@ -91,11 +93,13 @@ public static class ServiceCollectionExtensions
         // Register Services
         services.AddScoped<IDateTimeProvider, SystemDateTimeProvider>();
         services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IEmailSender, LoggingEmailSender>();
 
         // Register Repositories
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IUserPasswordHistoryRepository, UserPasswordHistoryRepository>();
         services.AddScoped<IUserLoginHistoryRepository, UserLoginHistoryRepository>();
+        services.AddScoped<IPasswordResetCodeRepository, PasswordResetCodeRepository>();
 
         return services;
     }

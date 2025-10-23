@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SnippetNet.Application.Identity.Commands.ForgotPassword;
-using SnippetNet.Application.Identity.Dtos;
 
 namespace SnippetNet.WebApp.Pages.Account;
 
@@ -19,8 +18,6 @@ public class ForgotPasswordModel : PageModel
     [BindProperty]
     public InputModel Input { get; set; } = new();
 
-    public ForgotPasswordTokenDto? Result { get; private set; }
-
     public void OnGet()
     {
     }
@@ -32,13 +29,8 @@ public class ForgotPasswordModel : PageModel
 
         try
         {
-            Result = await _mediator.Send(new ForgotPasswordCommand(Input.Email!), ct);
-
-            if (Result.Success && Result.ResetToken is not null)
-                ViewData["ResetToken"] = Result.ResetToken;
-
-            ViewData["Email"] = Input.Email;
-            return Page();
+            await _mediator.Send(new ForgotPasswordCommand(Input.Email!), ct);
+            return RedirectToPage("VerifyResetCode", new { email = Input.Email });
         }
         catch (FluentValidation.ValidationException ex)
         {
